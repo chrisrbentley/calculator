@@ -32,6 +32,7 @@
     height: 125px;
     width: 125px;
     font-size: 50px;
+    border-color: black;
 }
 
 .op-btns {
@@ -39,6 +40,7 @@
     height: 125px;
     width: 125px;
     font-size: 50px;
+    border-color: black;
 }
 
 .percent, .C, .neg-btn, .division {
@@ -46,6 +48,7 @@
     width: 125px;
     background-color: #B9B7B6;
     font-size: 50px;
+    border-color: black;
 }
 
 .division {
@@ -57,4 +60,5 @@
     width: 250px;
     background-color: #D1CBC9;;
     font-size: 50px;
+    border-color: black;
 }
