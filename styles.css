@@ -1,0 +1,60 @@
+#container {
+    background-color: #27282E;
+    margin: auto;
+    display: flex;
+    height: 755px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+}
+
+#display {
+    background-color: #27282E;
+    margin: 20px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 30px;
+}
+
+#btn-container {
+    background-color: palegreen;
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.btns {
+    background-color: #D1CBC9;
+    height: 125px;
+    width: 125px;
+    font-size: 50px;
+}
+
+.op-btns {
+    background-color: orange;
+    height: 125px;
+    width: 125px;
+    font-size: 50px;
+}
+
+.percent, .C, .neg-btn, .division {
+    height: 125px;
+    width: 125px;
+    background-color: #B9B7B6;
+    font-size: 50px;
+}
+
+.division {
+    background-color: orange;
+}
+
+.zero {
+    height: 125px;
+    width: 250px;
+    background-color: #D1CBC9;;
+    font-size: 50px;
+}
