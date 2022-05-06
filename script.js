@@ -1,43 +1,23 @@
-add = (...numbers) => {
-    let sum = 0;
-    numbers.forEach(function(number) {
-        sum += number;
-    });
-    console.log(sum);
-    return sum;
-};
-
-add(1, 9, 30);
-
-subtract = (a, ...numbers) => {
-    let sum = a;
-    numbers.forEach(function(number) {
-        sum -= number;
-    })
-    console.log(sum);
-    return sum;
+let add = (...nums) => {
+    return nums.reduce((a, b) => a + b);
 }
+console.log(add(9, 9, 3, 80));
 
-subtract(50, 10, 20);
 
-multiply = (a, ...numbers) => {
-    let sum = a;
-    numbers.forEach(function(number) {
-        sum *= number;
-    })
-    console.log(sum);
-    return sum;
+let subtract = (...nums) => {
+    return nums.reduce((a, b) => a - b);
 }
+console.log(subtract(43, 3, 10));
 
-multiply(8, 3, 2, 100);
 
-divide = (a, ...numbers) => {
-    let sum = a;
-    numbers.forEach(function(number) {
-        sum /= number;
-    })
-    console.log(sum);
-    return sum;
+let multiply = (...nums) => {
+    return nums.reduce((a, b) => a * b);
 }
+console.log(multiply(9, 9, 2));
 
-divide(80, 10, 2)
+let divide = (...nums) => {
+    return nums.reduce((a, b) => a / b);
+}
+console.log(divide(100, 10, 2));
+
+
