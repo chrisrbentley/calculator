@@ -43,12 +43,16 @@
     border-color: black;
 }
 
-.percent, .C, .neg-btn, .division {
+.percent, .C, .neg-btn, .division, .decimal {
     height: 125px;
     width: 125px;
     background-color: #B9B7B6;
     font-size: 50px;
     border-color: black;
+}
+
+.decimal {
+    background-color: #D1CBC9;
 }
 
 .division {

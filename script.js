@@ -26,10 +26,14 @@ let operate = (op, ...nums) => {
     }
 }
 
-console.log(operate('+', 9, 3, 3, 100));
-console.log(operate('-', 100, 10, 40));
-console.log(operate('*', 8, 3, 2));
-console.log(operate('/', 40, 2, 4));
+const display = document.querySelector('#display');
+const buttons = document.querySelectorAll('.btns')
 
 
 
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        display.textContent = 'loser';
+    })
+});
