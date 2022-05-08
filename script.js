@@ -1,3 +1,8 @@
+const display = document.querySelector('#display');
+const buttons = document.querySelectorAll('.btns')
+let displayValue = '';
+
+
 let add = (...nums) => {
     return nums.reduce((a, b) => a + b);
 }
@@ -26,14 +31,16 @@ let operate = (op, ...nums) => {
     }
 }
 
-const display = document.querySelector('#display');
-const buttons = document.querySelectorAll('.btns')
 
+function changeDisplay() {
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            displayValue = display.textContent += button.innerHTML;
+            console.log(displayValue);
+            return displayValue;
+        })
+    });
+}
+changeDisplay();
 
-
-
-buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-        display.textContent = 'loser';
-    })
-});
+console.log(changeDisplay);
