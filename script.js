@@ -1,6 +1,10 @@
 const display = document.querySelector('#display');
-const buttons = document.querySelectorAll('.btns')
+const buttons = document.querySelectorAll('.btns');
+const opBtns = document.querySelectorAll('.op-btns');
+const division = document.querySelectorAll('.division');
 let displayValue = '';
+let initialNum = '';
+let chosenOperator = '';
 
 
 let add = (...nums) => {
@@ -36,11 +40,32 @@ function changeDisplay() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             displayValue = display.textContent += button.innerHTML;
-            console.log(displayValue);
-            return displayValue;
+            initialNum = displayValue
+            console.log(initialNum);
+            return initialNum;
         })
     });
 }
 changeDisplay();
 
-console.log(changeDisplay);
+function onOperator(operate) {
+    opBtns.forEach((opBtn) => {
+        opBtn.addEventListener('click', () => {
+            //initialNum = displayValue;
+            displayValue = display.textContent = opBtn.innerHTML;
+            chosenOperator = displayValue;
+            console.log(chosenOperator);
+            return chosenOperator;
+        })
+    })
+}
+onOperator();
+
+
+//operation
+/*display.textContent = opBtn.innerHTML;
+            if (display.textContent === '÷') {
+                let solution = divide(initialNum, 2);
+                console.log(solution);
+            }
+            console.log(initialNum);*/
