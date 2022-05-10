@@ -2,9 +2,11 @@ const display = document.querySelector('#display');
 const buttons = document.querySelectorAll('.btns');
 const opBtns = document.querySelectorAll('.op-btns');
 const division = document.querySelectorAll('.division');
+const equalBtn = document.querySelectorAll('.equals');
 let displayValue = '';
 let initialNum = '';
 let chosenOperator = '';
+let ifOp = '';
 
 
 let add = (...nums) => {
@@ -39,6 +41,15 @@ let operate = (op, ...nums) => {
 function changeDisplay() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
+            if (display.textContent === '-') {
+                display.textContent = '';
+            } else if (display.textContent === '+') {
+                display.textContent = '';
+            } else if (display.textContent === '×') {
+                display.textContent = '';
+            } else if (display.textContent === '÷') {
+                display.textContent = '';
+            }
             displayValue = display.textContent += button.innerHTML;
             initialNum = displayValue
             console.log(initialNum);
@@ -52,8 +63,8 @@ function onOperator(operate) {
     opBtns.forEach((opBtn) => {
         opBtn.addEventListener('click', () => {
             //initialNum = displayValue;
-            displayValue = display.textContent = opBtn.innerHTML;
-            chosenOperator = displayValue;
+            newDisplayValue = display.textContent = opBtn.innerHTML;
+            chosenOperator = newDisplayValue;
             console.log(chosenOperator);
             return chosenOperator;
         })
@@ -62,10 +73,22 @@ function onOperator(operate) {
 onOperator();
 
 
+
+
 //operation
-/*display.textContent = opBtn.innerHTML;
-            if (display.textContent === '÷') {
-                let solution = divide(initialNum, 2);
+
+/*function onEquals() {
+    equalBtn.addEventListener('click', () => {
+        display.textContent = '';
+        operate(onOperator, changeDisplay);
+    })
+}*/
+
+
+
+/*display.textContent = equalBtn.innerHTML;
+    if (display.textContent === '÷') {
+        display.textContent = '';
+            let solution = divide(initialNum, 2);
                 console.log(solution);
-            }
-            console.log(initialNum);*/
+}*/

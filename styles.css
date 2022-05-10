@@ -43,7 +43,7 @@
     border-color: black;
 }
 
-.percent, .C, .neg-btn, .division, .decimal {
+.percent, .C, .neg-btn, .division, .decimal, .equals {
     height: 125px;
     width: 125px;
     background-color: #B9B7B6;
@@ -55,7 +55,7 @@
     background-color: #D1CBC9;
 }
 
-.division {
+.division, .equals {
     background-color: orange;
 }
 
