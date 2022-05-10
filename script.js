@@ -2,12 +2,13 @@ const display = document.querySelector('#display');
 const buttons = document.querySelectorAll('.btns');
 const opBtns = document.querySelectorAll('.op-btns');
 const division = document.querySelectorAll('.division');
-const equalBtn = document.querySelectorAll('.equals');
+const equalBtn = document.querySelector('.equals');
+
 let displayValue = '';
 let initialNum = [];
 let chosenOperator = '';
 let ifOp = '';
-
+let converted = [];
 
 let add = (...nums) => {
     return nums.reduce((a, b) => a + b);
@@ -30,12 +31,14 @@ let operate = (op, ...nums) => {
         return add(...nums)
     } else if (op === '-') {
         return subtract(...nums)
-    } else if (op === '*') {
+    } else if (op === '×') {
         return multiply(...nums)
-    } else if (op === '/') {
+    } else if (op === '÷') {
         return divide(...nums)
     }
 }
+
+//console.log(operate('+', 4, 2));
 
 
 function numberInput() {
@@ -57,7 +60,7 @@ function numberInput() {
 }
 numberInput();
 
-function onOperator(operate) {
+function onOperator() {
     opBtns.forEach((opBtn) => {
         opBtn.addEventListener('click', () => {
             initialNum.push(displayValue);
@@ -72,21 +75,12 @@ function onOperator(operate) {
 onOperator();
 
 
-
-//operation
-
-/*function onEquals() {
+function onEquals() {
     equalBtn.addEventListener('click', () => {
-        display.textContent = '';
-        operate(onOperator, numberInput);
+        initialNum.push(displayValue);
+        converted = initialNum.map(Number);
+        display.textContent = operate(chosenOperator, ...converted);
+        console.log(operate(chosenOperator, ...converted));
     })
-}*/
-
-
-
-/*display.textContent = equalBtn.innerHTML;
-    if (display.textContent === '÷') {
-        display.textContent = '';
-            let solution = divide(initialNum, 2);
-                console.log(solution);
-}*/
+}
+onEquals();
