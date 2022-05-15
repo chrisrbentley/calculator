@@ -1,3 +1,47 @@
+const display = document.querySelector('#display');
+const buttons = document.querySelectorAll('.btns');
+const opBtns = document.querySelectorAll('.op-btns');
+const division = document.querySelectorAll('.division');
+const equalBtn = document.querySelector('.equals');
+
+let sum;
+let nums = [10, 2];
+let op = '*';
+
+function add(a, b) {
+    sum = a + b;
+    return sum
+}
+
+function subtract(a, b) {
+    sum = a - b
+    return sum
+}
+
+function multiply(a, b) {
+    sum = a * b;
+    return sum
+}
+
+function divide(a, b) {
+    sum = a / b;
+    return sum
+}
+
+function operate(op, ...nums) {
+    if (op === '+') {
+        return add(...nums)
+    } else if (op === '-') {
+        return subtract(...nums)
+    } else if (op === '×') {
+        return multiply(...nums)
+    } else if (op === '÷') {
+        return divide(...nums)
+    }
+}
+console.log(operate(op, ...nums));
+
+
 /*let displayValue = '';
 let chosenOperator = '';
 let storedNums = [];
