@@ -1,26 +1,38 @@
-/*let displayValue = '';
-let chosenOperator = '';
-let storedNums = [];
-let result = [];
-let temp = 1;
+//const display = document.querySelector('#display');
+const buttons = document.querySelectorAll('.btns');
+const opBtns = document.querySelectorAll('.op-btns');
+//const division = document.querySelectorAll('.division');
+const equalBtn = document.querySelector('.equals');
 
-let add = (...nums) => {
-    return nums.reduce((a, b) => a + b);
+let sum = [];
+let nums = [];
+let num2 = [];
+let op;
+let newNum;
+let secondNum;
+let bothNums = [];
+
+function add(a, b) {
+    sum = a + b;
+    return sum
 }
 
-let subtract = (...nums) => {
-    return nums.reduce((a, b) => a - b);
+function subtract(a, b) {
+    sum = a - b
+    return sum
 }
 
-let multiply = (...nums) => {
-    return nums.reduce((a, b) => a * b);
+function multiply(a, b) {
+    sum = a * b;
+    return sum
 }
 
-let divide = (...nums) => {
-    return nums.reduce((a, b) => a / b);
+function divide(a, b) {
+    sum = a / b;
+    return sum
 }
 
-let operate = (op, ...nums) => {
+function operate(op, ...nums) {
     if (op === '+') {
         return add(...nums)
     } else if (op === '-') {
@@ -33,49 +45,124 @@ let operate = (op, ...nums) => {
 }
 
 
-function numInput() {
+function numberClick() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
-            if (display.textContent === '+' || display.textContent === '-' || display.textContent === '×' || display.textContent === '÷' || temp > 1) {
-                display.textContent = '';
-                temp++
+            if (nums.length === 0) {
+                nums.push(button.innerHTML);
+                return nums
+            } else if (nums.length > 0) {
+                num2.push(button.innerHTML);
+                return nums
             }
-            if (display.textContent === displayValue.toString() && chosenOperator != '') {
-                console.log('test');
-                temp++
-            }
-
-            displayValue = display.textContent += button.innerHTML;
         })
     })
 }
-numInput();
-
-function opInput() {
+numberClick();
+ 
+function onOperator() {
     opBtns.forEach((opBtn) => {
         opBtn.addEventListener('click', () => {
-            if (storedNums > 0) {
-                storedNums.push(display.textContent);
-                storedNums = storedNums.map(Number);
-                displayValue = display.textContent = operate(chosenOperator, ...storedNums);
+            if (bothNums.length > 0 && sum.length < 1) {
+                newNum = nums.concat(num2);
+                newNum = newNum.join('');
+                bothNums.push(newNum);
+                bothNums = bothNums.map(Number);
+                sum = operate(chosenOperator, ...bothNums);
+                bothNums = []
+                bothNums.push(sum);
+                nums = [];
                 chosenOperator = opBtn.innerHTML;
-                storedNums = [];
-                storedNums.push(display.textContent);
-                storedNums = storedNums.map(Number);
+                return sum;
+            } else if (bothNums.length > 0 && sum != '') {
+                if (nums.length === 0 && num2.length === 0) {
+                    chosenOperator = opBtn.innerHTML;
+                    newNum = [];
+                } else if (nums.length > 0) {
+                    newNum = nums.concat(num2);
+                    newNum = newNum.join('');
+                    bothNums.push(newNum);
+                    bothNums = bothNums.map(Number);
+                    sum = operate(chosenOperator, ...bothNums);
+                    newNum = [];
+                    nums = [];
+                    num2 = [];
+                    bothNums = [];
+                    bothNums.push(sum); /////
+                    chosenOperator = opBtn.innerHTML;
+                } else if (nums.length > 0 && num2.length < 1) {
+                    console.log('newtest');
+                }
+                else {
+                    num2 = num2.join('');
+                    num2 = parseInt(num2);
+                    bothNums.push(num2);
+                    sum = operate(chosenOperator, ...bothNums)
+                    chosenOperator = opBtn.innerHTML;
+                    num2 = [];
+                    bothNums = []
+                    bothNums.push(sum);
+                    return sum;
+                }
             } else {
-                chosenOperator = display.textContent = opBtn.innerHTML;
-                storedNums.push(displayValue)
-            }
+                chosenOperator = opBtn.innerHTML;
+                newNum = nums.concat(num2);
+                newNum = newNum.join('');
+                bothNums.push(newNum);
+                bothNums = bothNums.map(Number);
+                nums = [];
+                num2 = [];
+                return bothNums;
+            };
         })
     })
 }
-opInput();
+onOperator();
 
 function onEquals() {
     equalBtn.addEventListener('click', () => {
-        storedNums.push(displayValue);
-        storedNums = storedNums.map(Number);
-        result = display.textContent = operate(chosenOperator, ...storedNums);
+        if (sum != '') {
+            if (nums.length > 0 && num2.length === 0) {
+                newNum = nums.concat(num2);
+                bothNums.push(newNum[0]);
+                bothNums = bothNums.map(Number);
+                sum = operate(chosenOperator, ...bothNums);
+                nums = [];
+                num2 = [];
+                bothNums = []; //
+                bothNums.push(sum); //
+            } else if (nums.length > 0 && num2.length > 0) {
+                console.log('222');
+                newNum = nums.concat(num2);
+                newNum = newNum.join('');
+                bothNums.push(newNum);
+                bothNums = bothNums.map(Number);
+                sum = operate(chosenOperator, ...bothNums);
+                nums = [];
+                num2 = [];
+            } else {
+                num2 = num2.join('');
+                num2 = parseInt(num2);
+                bothNums.push(num2);
+                sum = operate(chosenOperator, ...bothNums)
+                bothNums = [];
+                bothNums.push(sum);
+                num2 = [];
+                return sum;
+            }
+        } else {
+            newNum = nums.concat(num2);
+            newNum = newNum.join('');
+            bothNums.push(newNum);
+            bothNums = bothNums.map(Number);
+            nums = [];
+            num2 = [];
+            sum = operate(chosenOperator, ...bothNums);
+            bothNums = [];
+            bothNums.push(sum);
+            return sum;
+        }
+        
     })
 }
-onEquals();*/
+onEquals();
