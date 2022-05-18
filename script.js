@@ -2,13 +2,13 @@ const display = document.querySelector('#display');
 const buttons = document.querySelectorAll('.btns');
 const opBtns = document.querySelectorAll('.op-btns');
 const equalBtn = document.querySelector('.equals');
+const clearBtn = document.querySelector('.C');
 
 let sum = [];
 let nums = [];
 let num2 = [];
 let op;
 let newNum;
-let secondNum;
 let bothNums = [];
 
 function add(a, b) {
@@ -89,10 +89,7 @@ function onOperator() {
                     bothNums = [];
                     bothNums.push(sum); /////
                     chosenOperator = opBtn.innerHTML;
-                } else if (nums.length > 0 && num2.length < 1) {
-                    console.log('newtest');
-                }
-                else {
+                } else {
                     num2 = num2.join('');
                     num2 = parseInt(num2);
                     bothNums.push(num2);
@@ -194,3 +191,17 @@ function changeDisplayEq() {
     })
 }
 changeDisplayEq();
+
+function clearAll() {
+    clearBtn.addEventListener('click', () => {
+        sum = [];
+        nums = [];
+        num2 = [];
+        chosenOperator = ''
+        op = '';
+        newNum = '';
+        bothNums = [];
+        display.textContent = '';
+    })
+}
+clearAll();
