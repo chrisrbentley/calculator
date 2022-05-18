@@ -128,7 +128,6 @@ function onEquals() {
                 bothNums = []; //
                 bothNums.push(sum); //
             } else if (nums.length > 0 && num2.length > 0) {
-                console.log('222');
                 newNum = nums.concat(num2);
                 newNum = newNum.join('');
                 bothNums.push(newNum);
