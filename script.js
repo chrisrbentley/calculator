@@ -1,7 +1,6 @@
-//const display = document.querySelector('#display');
+const display = document.querySelector('#display');
 const buttons = document.querySelectorAll('.btns');
 const opBtns = document.querySelectorAll('.op-btns');
-//const division = document.querySelectorAll('.division');
 const equalBtn = document.querySelector('.equals');
 
 let sum = [];
@@ -166,3 +165,32 @@ function onEquals() {
     })
 }
 onEquals();
+
+function changeDisplayDig() {
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            display.textContent = nums.concat(num2).join('');
+        })
+    })
+}
+changeDisplayDig();
+
+function changeDisplayOp() {
+    opBtns.forEach((opBtn) => {
+        opBtn.addEventListener('click', () => {
+            if (typeof sum === 'number') {
+                display.textContent = sum;
+            } else {
+                display.textContent = opBtn.innerHTML;
+            }
+        })
+    })
+}
+changeDisplayOp();
+
+function changeDisplayEq() {
+    equalBtn.addEventListener('click', () => {
+        display.textContent = sum;
+    })
+}
+changeDisplayEq();
